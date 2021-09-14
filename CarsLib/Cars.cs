@@ -23,6 +23,7 @@ namespace CarsLib
             Make = make;
             Model = model;
             YearOfManufacture = yearOfManufacture;
+            //TODO (add speed limits to constructor)
             Speed = speed;
         }
 
@@ -37,7 +38,8 @@ namespace CarsLib
         }
         
         // Gets the current age by year of the the car based on current year and year of manufacture.  *Hint use DateTime.Now
-        public void GetAge(){
+        // TODO Check this should be int
+        public int GetAge(){
             throw new NotImplementedException();
         }
 
