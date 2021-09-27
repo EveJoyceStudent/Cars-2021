@@ -34,18 +34,29 @@ namespace CarsLib
 
         // increases the speed of a Car.  Cannot exceed 150.  If negative number is given, change it to positive
         public void IncreaseSpeed(int speed){
-            throw new NotImplementedException();
+            if(speed<0){
+                speed*=-1;
+            }
+            this.Speed+=speed;
+            if(this.Speed>150){
+                this.Speed=150;
+            }
         }
         
         // decreases the speed of a Car.  Cannot go below 0.  If negative number is given, change it to positive
         public void DecreaseSpeed(int speed){
-            throw new NotImplementedException();
+            if(speed>0){
+                speed*=-1;
+            }
+            this.Speed+=speed;
+            if(this.Speed<0){
+                this.Speed=0;
+            }
         }
         
         // Gets the current age by year of the the car based on current year and year of manufacture.  *Hint use DateTime.Now
-        // TODO Check this should be int
         public int GetAge(){
-            throw new NotImplementedException();
+            return DateTime.Now.Year-this.YearOfManufacture;
         }
 
     }

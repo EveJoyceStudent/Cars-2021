@@ -59,7 +59,7 @@ namespace CarsTests
         [InlineData (1, 26)]
         [InlineData (2, 27)]
         [InlineData (3, 0)]
-        [InlineData (4, -1)] // should this be 0?
+        [InlineData (4, 0)] // should this be 0?
         public void GetAge(int carIndex, int expected)
         {
             Assert.Equal (expected, carList[carIndex].GetAge());
