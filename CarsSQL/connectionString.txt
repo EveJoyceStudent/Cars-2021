@@ -1,1 +1,3 @@
-Server=beersdb.cxjl13cbth6s.us-east-1.rds.amazonaws.com;Database=BeersDB;User Id=admin;password=abcd1234
+Server=accttwo.czwzndcmtnya.us-east-1.rds.amazonaws.com;Database=CarsDB;User Id=admin;password=D4dd474b453
+
+--Server=beersdb.cxjl13cbth6s.us-east-1.rds.amazonaws.com;Database=BeersDB;User Id=admin;password=abcd1234

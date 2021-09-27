@@ -4,12 +4,6 @@ namespace CarsLib
 {
     public class Car
     {
-        // registration VARCHAR(7) PRIMARY KEY,
-        // make VARCHAR(25),
-        // model VARCHAR(25),
-        // yearOfManufacture INT,
-        // speed INT
-
         public string Registration { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
@@ -22,9 +16,20 @@ namespace CarsLib
             Registration = registration;
             Make = make;
             Model = model;
-            YearOfManufacture = yearOfManufacture;
-            //TODO (add speed limits to constructor)
-            Speed = speed;
+            //  added year limit to constructor
+            if(yearOfManufacture>DateTime.Now.Year){
+                YearOfManufacture = DateTime.Now.Year;
+            } else {
+                YearOfManufacture = yearOfManufacture;
+            }
+            //  added speed limits to constructor
+            if(speed<=0){
+                Speed = 0;
+            } else if(speed>=150){
+                Speed = 150;
+            } else {
+                Speed = speed;
+            }
         }
 
         // increases the speed of a Car.  Cannot exceed 150.  If negative number is given, change it to positive
