@@ -47,7 +47,7 @@ namespace CarsApi.Handlers
             return null;
         }
 
-        public int AddCar(Car newCar){
+        public string AddCar(Car newCar){
             int rowsAffected;
 
             string query = "INSERT INTO Car VALUES (@registration, @make, @model, @yearOfManufacture, @speed)";
@@ -85,10 +85,14 @@ namespace CarsApi.Handlers
 
                 rowsAffected = command.ExecuteNonQuery();
             }
-            return rowsAffected;
+            if(rowsAffected>0){
+                return "Status OK";
+            } else {
+                return "Something went wrong";
+            }
         }
 
-        public int UpdateCar(Car updateCar){
+        public string UpdateCar(Car updateCar){
             
             int rowsAffected;
 
@@ -127,13 +131,17 @@ namespace CarsApi.Handlers
 
                 rowsAffected = command.ExecuteNonQuery();
             }
-            return rowsAffected;
+            if(rowsAffected>0){
+                return $"Status OK, updated {rowsAffected} car(s)";
+            } else {
+                return "Something went wrong";
+            }
         }
 
-        public int DeleteCar(Car deleteCar){
+        public string DeleteCar(Car deleteCar){
             int rowsAffected;
 
-            string query = "DELETE FROM Car WHERE REGISTRATION=@registration AND MAKE=@make AND MODEL=@model AND YEAROFMANUFACTURE=@yearOfManufacture AND SPEED=@speed";
+            string query = "DELETE FROM Car WHERE REGISTRATION=@registration";
 
             using(SqlConnection connection = new SqlConnection(connectionString)) {
                 SqlCommand command = new SqlCommand(query, connection);
@@ -144,31 +152,16 @@ namespace CarsApi.Handlers
                 registrationParam.ParameterName = "@registration";
                 registrationParam.Value = deleteCar.Registration;
 
-                SqlParameter makeParam = new SqlParameter();
-                makeParam.ParameterName = "@make";
-                makeParam.Value = deleteCar.Make;
-
-                SqlParameter modelParam = new SqlParameter();
-                modelParam.ParameterName = "@model";
-                modelParam.Value = deleteCar.Model;
-
-                SqlParameter yearOfManufactureParam = new SqlParameter();
-                yearOfManufactureParam.ParameterName = "@yearOfManufacture";
-                yearOfManufactureParam.Value = deleteCar.YearOfManufacture;
-
-                SqlParameter speedParam = new SqlParameter();
-                speedParam.ParameterName = "@speed";
-                speedParam.Value = deleteCar.Speed;
-
                 command.Parameters.Add(registrationParam);
-                command.Parameters.Add(makeParam);
-                command.Parameters.Add(modelParam);
-                command.Parameters.Add(yearOfManufactureParam);
-                command.Parameters.Add(speedParam);
 
                 rowsAffected = command.ExecuteNonQuery();
             }
-            return rowsAffected;
+            
+            if(rowsAffected>0){
+                return $"Status OK, updated {rowsAffected} car(s)";
+            } else {
+                return "Something went wrong";
+            }
         }
     }
 }

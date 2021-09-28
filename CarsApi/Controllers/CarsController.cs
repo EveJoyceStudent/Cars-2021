@@ -26,17 +26,17 @@ namespace CarsApi.Controllers {
         }
         
         [HttpPost]
-        public int Post(Car newCar) {
+        public string Post(Car newCar) {
             return this.dbh.AddCar(newCar);
         }
 
         [HttpPut]
-        public int PutUpdate(Car updateCar){
+        public string PutUpdate(Car updateCar){
             return this.dbh.UpdateCar(updateCar);
         }
 
         [HttpDelete]
-        public int Delete(Car deleteCar){
+        public string Delete(Car deleteCar){
             return this.dbh.DeleteCar(deleteCar);
         }
     }
