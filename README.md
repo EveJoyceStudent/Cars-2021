@@ -1,9 +1,10 @@
 # Cars-2021
-1.  Create skeleton class code for a Car
+1.  Complete the end point spec in Car Endpoints Spec.xlsx
+2.  Create skeleton class code for a Car
     Methods;
       - void IncreaseSpeed(int speed) -> increases the speed of a Car.  Cannot exceed 150.  If negative number is given, change it to positive
       - void DecreaseSpeed(int speed) -> decreases the speed of a Car.  Cannot go below 0.  If negative number is given, change it to positive
-      - void GetAge() -> Gets the current age by year of the the car based on current year and year of manufacture.  *Hint use DateTime.Now
+      - int GetAge() -> Gets the current age by year of the the car based on current year and year of manufacture.  *Hint use DateTime.Now
 2.  Create some unit tests for the methods in Car
 3.  Complete and test the Car class
 4.  Create an Api Project
