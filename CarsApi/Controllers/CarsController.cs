@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using CarsLib;
 using Microsoft.AspNetCore.Mvc;
-// using CarsApi.Handlers;
+using CarsApi.Handlers;
 
 namespace CarsApi.Controllers {
     [ApiController]
     [Route ("[controller]")]
     public class CarsController : ControllerBase {
 
-        static Car[] Cars = {};
-        // DbHandler dbh = new DbHandler();
+        DbHandler dbh = new DbHandler();
 
         public CarsController() {
 
@@ -18,28 +17,27 @@ namespace CarsApi.Controllers {
 
         [HttpGet]        
         public List<Car> Get () {
-            throw new NotImplementedException();
+            return this.dbh.GetCars();
         }
 
         [HttpGet("{rego}")]
         public Car GetCar(string rego) {
-            throw new NotImplementedException();
+            return this.dbh.GetCarByRego(rego);
         }
         
         [HttpPost]
         public int Post(Car newCar) {
-            throw new NotImplementedException();
+            return this.dbh.AddCar(newCar);
         }
 
         [HttpPut]
         public int PutUpdate(Car updateCar){
-            throw new NotImplementedException();
+            return this.dbh.UpdateCar(updateCar);
         }
 
         [HttpDelete]
         public int Delete(Car deleteCar){
-            throw new NotImplementedException();
+            return this.dbh.DeleteCar(deleteCar);
         }
     }
-
 }
